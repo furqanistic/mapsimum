@@ -1,6 +1,7 @@
 import { MessageCircle, MoreHorizontal, Plus, Users } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import InviteMemberModal from './InviteMemberModal'
 
 const TeamDashboard = () => {
   const teams = [
@@ -125,7 +126,9 @@ const TeamDashboard = () => {
           <div className='flex gap-4'>
             <button className='bg-[#4fd1c5] hover:bg-[#45b8ae] transition-colors text-white px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm font-medium'>
               <Users size={18} />
-              <span>Request Join</span>
+              <Link to='/driver/team/review-request'>
+                <span>Review Request </span>
+              </Link>
               <span className='bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 ml-1'>
                 5
               </span>
@@ -195,10 +198,7 @@ const TeamDashboard = () => {
               </div>
 
               {/* Invite Button */}
-              <button className='w-full py-2.5 text-[#4fd1c5] border border-[#4fd1c5] rounded-lg hover:bg-[#4fd1c5] hover:text-white transition-colors flex items-center justify-center gap-2 text-sm font-medium'>
-                <Users size={16} />
-                <span>Invite Member</span>
-              </button>
+              <InviteMemberModal />
             </div>
           ))}
         </div>

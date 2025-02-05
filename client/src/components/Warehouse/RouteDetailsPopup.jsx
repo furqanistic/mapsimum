@@ -51,37 +51,37 @@ const RouteDetailsPopup = ({ rackNumber, routeName, onClose }) => {
       trackingNumber: '#AB123456789CD',
       customerName: 'Jane Bator',
       address: '3500 WHITE PLAINS LANE, APT 3C DALLAS, TEXAS 75045 - 70089',
-      driverName: 'John Doe',
+      driverName: 'Furqan',
     },
     {
       trackingNumber: '#AB123456789CD',
       customerName: 'Jane Bator',
       address: '3500 WHITE PLAINS LANE, APT 3C DALLAS, TEXAS 75045 - 70089',
-      driverName: 'John Doe',
+      driverName: 'Furqan',
     },
     {
       trackingNumber: '#AB123456789CD',
       customerName: 'Jane Bator',
       address: '3500 WHITE PLAINS LANE, APT 3C DALLAS, TEXAS 75045 - 70089',
-      driverName: 'John Doe',
+      driverName: 'Furqan',
     },
     {
       trackingNumber: '#AB123456789CD',
       customerName: 'Jane Bator',
       address: '3500 WHITE PLAINS LANE, APT 3C DALLAS, TEXAS 75045 - 70089',
-      driverName: 'John Doe',
+      driverName: 'Furqan',
     },
     {
       trackingNumber: '#AB123456789CD',
       customerName: 'Jane Bator',
       address: '3500 WHITE PLAINS LANE, APT 3C DALLAS, TEXAS 75045 - 70089',
-      driverName: 'John Doe',
+      driverName: 'Furqan',
     },
     {
       trackingNumber: '#AB123456789CD',
       customerName: 'Jane Bator',
       address: '3500 WHITE PLAINS LANE, APT 3C DALLAS, TEXAS 75045 - 70089',
-      driverName: 'John Doe',
+      driverName: 'Furqan',
     },
   ]
 

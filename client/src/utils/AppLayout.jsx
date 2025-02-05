@@ -1,17 +1,19 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import {
+  Bell,
   ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  CloudUpload,
+  HelpCircle,
   LayoutDashboard,
+  LogOut,
   MapPin,
   Menu,
   MessagesSquare,
   PiggyBank,
   RotateCcw,
+  Search,
   Settings,
   Truck,
+  User,
   Users,
   Warehouse,
 } from 'lucide-react'
@@ -19,29 +21,79 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const Topbar = ({ toggleSidebar, isSidebarOpen }) => {
+  const [showProfileMenu, setShowProfileMenu] = useState(false)
+  const [notifications] = useState([
+    { id: 1, text: 'New delivery request', time: '5m ago' },
+    { id: 2, text: 'Driver #123 completed route', time: '10m ago' },
+  ])
+
   return (
     <div
-      className='fixed top-0 right-0 h-16 bg-[#0B1425] border-b border-gray-800 px-4 flex items-center justify-between transition-all duration-300 z-50'
+      className='fixed top-0 right-0 h-16 bg-[#0B1425] border-b border-gray-800 px-6 flex items-center justify-between transition-all duration-300 z-50'
       style={{
         left: isSidebarOpen ? '256px' : '72px',
         width: `calc(100% - ${isSidebarOpen ? '256px' : '72px'})`,
       }}
     >
-      <button
-        onClick={toggleSidebar}
-        className='text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800'
-      >
-        <Menu size={24} />
-      </button>
+      {/* Left Section */}
+      <div className='flex items-center gap-6'>
+        <button
+          onClick={toggleSidebar}
+          className='text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800'
+        >
+          <Menu size={20} />
+        </button>
+      </div>
 
+      {/* Right Section */}
       <div className='flex items-center gap-4'>
-        <span className='text-gray-200'>John Doe</span>
-        <div className='h-10 w-10 rounded-full bg-gray-700 overflow-hidden'>
-          <img
-            src='https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?cs=srgb&dl=pexels-olly-846741.jpg&fm=jpg'
-            alt='Profile'
-            className='h-full w-full object-cover'
-          />
+        {/* Notifications */}
+        <div className='relative'>
+          <button className='p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg relative'>
+            <Bell size={20} />
+            <span className='absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full'></span>
+          </button>
+        </div>
+
+        {/* Profile Section */}
+        <div className='relative'>
+          <button
+            onClick={() => setShowProfileMenu(!showProfileMenu)}
+            className='flex items-center gap-3 text-gray-300 hover:text-white p-2 rounded-lg hover:bg-gray-800'
+          >
+            <div className='h-8 w-8 rounded-full bg-gray-700 overflow-hidden'>
+              <img
+                src='https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?cs=srgb&dl=pexels-olly-846741.jpg&fm=jpg'
+                alt='Profile'
+                className='h-full w-full object-cover'
+              />
+            </div>
+            <span className='hidden md:block'>Furqan</span>
+            <ChevronDown size={16} className='hidden md:block' />
+          </button>
+
+          {/* Profile Dropdown */}
+          {showProfileMenu && (
+            <div className='absolute right-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg border border-gray-800 py-1'>
+              <button className='w-full px-4 py-2 text-left text-gray-300 hover:bg-gray-800 flex items-center gap-2'>
+                <User size={16} />
+                <span>Profile</span>
+              </button>
+              <button className='w-full px-4 py-2 text-left text-gray-300 hover:bg-gray-800 flex items-center gap-2'>
+                <Settings size={16} />
+                <span>Settings</span>
+              </button>
+              <button className='w-full px-4 py-2 text-left text-gray-300 hover:bg-gray-800 flex items-center gap-2'>
+                <HelpCircle size={16} />
+                <span>Help</span>
+              </button>
+              <div className='border-t border-gray-800 my-1'></div>
+              <button className='w-full px-4 py-2 text-left text-red-400 hover:bg-gray-800 flex items-center gap-2'>
+                <LogOut size={16} />
+                <span>Logout</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -68,8 +120,8 @@ const SIDEBAR_ITEMS = [
     icon: Truck,
     to: '/delivery',
     subItems: [
-      { name: 'Driver and Route', to: '/delivery/driver-route' },
-      { name: 'Driver Assignments', to: '/delivery/assignments' },
+      { name: 'Ongoing Deliveries', to: '/delivery/ongoing' },
+      { name: 'Driver Assignments', to: '/driver/assignments' },
     ],
   },
   {
@@ -77,7 +129,8 @@ const SIDEBAR_ITEMS = [
     icon: Users,
     to: '/driver',
     subItems: [
-      { name: 'List Team', to: '/driver/team' },
+      { name: ' Team', to: '/driver/team' },
+      { name: ' Driver', to: '/driver/details' },
       { name: 'Fuel and Distance Record', to: '/driver/fuel-distance' },
       { name: 'Driver Assignments', to: '/driver/assignments' },
       { name: 'Driver Violations', to: '/driver/violations' },

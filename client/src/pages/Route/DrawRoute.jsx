@@ -1,8 +1,13 @@
+import ZoneManagement from '@/components/Route/ZoneManagement'
 import AppLayout from '@/utils/AppLayout'
 import React from 'react'
 
 const DrawRoute = () => {
-  return <AppLayout>DrawRoute</AppLayout>
+  return (
+    <AppLayout>
+      <ZoneManagement />
+    </AppLayout>
+  )
 }
 
 export default DrawRoute

@@ -4,7 +4,7 @@ const DeliveryTable = () => {
   const deliveryData = [
     {
       time: '2024-09-01',
-      driver: 'John Doe',
+      driver: 'Furqan',
       route: 1,
       revenue: 1200,
       expenses: 300,
